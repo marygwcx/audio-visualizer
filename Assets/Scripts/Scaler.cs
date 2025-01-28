@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Scaler : MonoBehaviour
 {
+    public float minScale = 0.5f;
+    public float maxScale = 1.5f;
     
     void Update()
     {
         //transform.localScale = AudioAnalyzer.instance.average * new Vector3(1, 1, 1);
-        transform.localScale = AudioAnalyzer.instance.average * Vector3.one * 10;
+        var scale = Mathf.Lerp(minScale, maxScale, AudioAnalyzer.instance.average);
+        transform.localScale = scale * Vector3.one;
     }
 }
